@@ -7,10 +7,11 @@ import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ParticipantsList } from '../components/participants-list/participants-list';
+import { WhoAndHowMuch } from '../components/who-and-how-much/who-and-how-much';
 
 @NgModule({
   declarations: [
-    AppComponent, ParticipantsList
+    AppComponent, ParticipantsList, WhoAndHowMuch
   ],
   imports: [
     BrowserModule,
