@@ -1,0 +1,19 @@
+<h1>Liste des personnes qui participents :</h1>
+
+<form (ngSubmit)="register()" [formGroup]="participantsForm">
+  <div class="input-group">
+    <input type="text" class="form-control" aria-label="...">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default">Button</button>
+    </div>
+  </div>
+  <div>
+    <label>Prénom</label><input formControlName="name">
+    <button (click)="addParticipant()" type="button">Ajouter une personne</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let participant of participants; let i = index">{{participant}}<button type="button" (click)="deleteParticipant(i)">Enlever de la liste</button></li>
+  </ul>
+  <button type="submit">Suivant</button>
+</form>
