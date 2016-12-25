@@ -22,6 +22,7 @@ export class ParticipantsList {
   register() {
       if(this.participants.length >= 2) {
           console.log('register');
+          console.log(this.participants);
       }
   }
 

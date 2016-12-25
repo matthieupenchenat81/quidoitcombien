@@ -1,19 +1,26 @@
-<h1>Liste des personnes qui participents :</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Liste des participants :</h1>
 
-<form (ngSubmit)="register()" [formGroup]="participantsForm">
-  <div class="input-group">
-    <input type="text" class="form-control" aria-label="...">
-    <div class="input-group-btn">
-      <button type="button" class="btn btn-default">Button</button>
-    </div>
-  </div>
-  <div>
-    <label>Prénom</label><input formControlName="name">
-    <button (click)="addParticipant()" type="button">Ajouter une personne</button>
-  </div>
+    <form (ngSubmit)="register()" [formGroup]="participantsForm">
+      <div class="input-group">
+        <input type="text" placeholder="Entres un prénom" class="form-control" formControlName="name">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-default" (click)="addParticipant()">Ajouter</button>
+        </div>
+      </div>
+      <br/>
 
-  <ul>
-    <li *ngFor="let participant of participants; let i = index">{{participant}}<button type="button" (click)="deleteParticipant(i)">Enlever de la liste</button></li>
-  </ul>
-  <button type="submit">Suivant</button>
-</form>
+      <div class="well">
+        <ul>
+          <li *ngFor="let participant of participants; let i = index">
+            {{participant}}
+            <button type="button" class="btn btn-default" (click)="deleteParticipant(i)">Enlever</button>
+          </li>
+        </ul>  
+      </div>
+      
+      <button type="submit" class="btn btn-success">Suivant</button>
+    </form>    
+  </div>
+</div>

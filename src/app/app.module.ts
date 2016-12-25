@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ParticipantsList } from '../components/participants-list/participants-list';
@@ -15,7 +16,8 @@ import { ParticipantsList } from '../components/participants-list/participants-l
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
