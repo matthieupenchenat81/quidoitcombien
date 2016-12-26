@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'participants-list',
@@ -11,7 +12,7 @@ export class ParticipantsList {
   nameCtrl: FormControl;
   participantsForm: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(private router: Router, fb: FormBuilder) {
     this.participants = new Array();
     this.nameCtrl = fb.control('');
     this.participantsForm = fb.group({
@@ -23,6 +24,7 @@ export class ParticipantsList {
       if(this.participants.length >= 2) {
           console.log('register');
           console.log(this.participants);
+          this.router.navigate(['quiEtCombien']);
       }
   }
 

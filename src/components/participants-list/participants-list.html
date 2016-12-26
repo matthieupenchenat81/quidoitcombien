@@ -12,6 +12,8 @@
       <br/>
 
       <div class="well">
+
+        <alert type="warning" *ngIf="participants.length === 0">Aucun participant encore ajouté</alert>
         <ul>
           <li *ngFor="let participant of participants; let i = index">
             {{participant}}
