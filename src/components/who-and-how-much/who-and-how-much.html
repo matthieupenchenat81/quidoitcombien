@@ -1,2 +1,16 @@
-<p>Qui et combien ?</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
+    <h2>Qui a déjà payé combien ? </h2><br/>
+
+    <form (ngSubmit)="register(form.value)" #form="ngForm" class="form-horizontal">
+        <div class="form-group" *ngFor="let participant of participants; let i = index">
+            <label for="{{i}}" class="col-sm-2 control-label">{{participant}}</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" name="{{i}}" placeholder="montant" id="{{i}}" ngModel>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Suivant</button>
+    </form>
+  </div>
+</div>

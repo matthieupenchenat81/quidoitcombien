@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { SessionService } from '../../services/session-service';
+
 @Component({
   selector: 'participants-list',
   templateUrl: './participants-list.html',
@@ -12,8 +14,8 @@ export class ParticipantsList {
   nameCtrl: FormControl;
   participantsForm: FormGroup;
 
-  constructor(private router: Router, fb: FormBuilder) {
-    this.participants = new Array();
+  constructor(private router: Router, fb: FormBuilder, private sessionService:  SessionService) {
+    this.participants = new Array<string>();
     this.nameCtrl = fb.control('');
     this.participantsForm = fb.group({
       name: this.nameCtrl
@@ -22,8 +24,7 @@ export class ParticipantsList {
 
   register() {
       if(this.participants.length >= 2) {
-          console.log('register');
-          console.log(this.participants);
+          this.sessionService.setParticipants(this.participants);
           this.router.navigate(['quiEtCombien']);
       }
   }

@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { ParticipantsList } from '../components/participants-list/participants-list';
 import { WhoAndHowMuch } from '../components/who-and-how-much/who-and-how-much';
 
+import { SessionService } from '../services/session-service';
+
 const appRoutes: Routes = [
   { path: 'participants', component: ParticipantsList },
   { path: 'quiEtCombien',      component: WhoAndHowMuch },
@@ -30,7 +32,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
