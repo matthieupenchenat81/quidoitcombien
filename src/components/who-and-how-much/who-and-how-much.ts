@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { SessionService } from '../../services/session-service';
-import { Purchase } from '../../app/Purchase';
+import { Purchase } from '../../app/CustomClasses';
 
 @Component({
   selector: 'who-and-how-much',
@@ -13,7 +14,7 @@ export class WhoAndHowMuch {
   participants : Array<String>;
   formGroup: FormGroup;
 
-  constructor(fb: FormBuilder, private sessionService : SessionService) {
+  constructor(fb: FormBuilder, private sessionService : SessionService, private router : Router) {
     this.participants = sessionService.getParticipants();
   }
 
@@ -24,5 +25,6 @@ export class WhoAndHowMuch {
       purchasesList.push(new Purchase(participant, formData[i]));
     });
     this.sessionService.setPurchasesList(purchasesList);
+    this.router.navigate(['resume']);
   }
 }

@@ -1,4 +1,4 @@
-import { Purchase } from '../app/Purchase';
+import { Purchase, ParticipantDebts } from '../app/CustomClasses';
 
 export class SessionService {
     _participants : Array<String>; 
