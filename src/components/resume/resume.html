@@ -1,1 +1,31 @@
-<h2>Resume template OK</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <h2>Partage des frais</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Dette(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let participantDebts of participantsDebts">
+                <td>{{participantDebts.participant}}</td>
+                <td>
+                    <ul [hidden]="participantDebts.debts.length === 0">
+                        <li *ngFor="let debt of participantDebts.debts">
+                            doit {{debt.amount}} à {{debt.participant}}
+                        </li>
+                    </ul>
+                    <span [hidden]="participantDebts.debts.length !== 0">
+                        n'a plus rien à payer ! 
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+  </div>
+</div>
