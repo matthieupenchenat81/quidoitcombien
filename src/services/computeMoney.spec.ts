@@ -14,16 +14,17 @@ describe('ComputeMoney Service', () => {
     purchaseList.push(new Purchase("Matthieu", 9));
     purchaseList.push(new Purchase("Aurélien", 7));
 
-    let res = `Participant : Florent : 
+    let res = `Florent doit donner : 
 
-        dette : 3 à donner à Matthieu,2.33 à donner à Aurélien
-        ,Participant : Matthieu : 
 
-        dette : 4.67 à donner à Florent,2.33 à donner à Aurélien
-        ,Participant : Aurélien : 
+,Matthieu doit donner : 
+1.67 à Florent
 
-        dette : 4.67 à donner à Florent,3 à donner à Matthieu
-        `
+,Aurélien doit donner : 
+2.34 à Florent,0.67 à Matthieu
+
+`;
+
     expect(computeMoneyToGive(purchaseList).toString()).toEqual(res);
   }));
 });

@@ -38,17 +38,31 @@ export class Debt {
     }
 
     toString() {
-        return `${this._amount} à donner à ${this._participant}`;
+        return `${this._amount} à ${this._participant}`;
     }
 }
 
 export class ParticipantDebts {
-    constructor(private participant : String, private debts : Array<Debt>) {}
+    constructor(private _participant : String, private _debts : Array<Debt>) {}
+
+    get participant() {
+        return this._participant;
+    }
+
+    set participant(participant) {
+        this._participant = participant;
+    }
+
+    get debts() {
+        return this._debts;
+    }
+
+    set debts(debts) {
+        this._debts = debts;
+    }
 
     toString() {
-        return `Participant : ${this.participant} : \n
-        dette : ${this.debts}
-        `;
+        return `${this.participant} doit donner : \n${this.debts}\n\n`;
     }
 
 }

@@ -17,5 +17,31 @@ export function computeMoneyToGive(purchaseList : Array<Purchase>) : Array<Parti
         resume.push(new ParticipantDebts(purchase.participant, debts));
     }
 
-    return resume;
+    return simplify(resume);
+}
+
+function simplify(participantsDebts : Array<ParticipantDebts>) : Array<ParticipantDebts> {
+
+    let simplifiedParticipantsDebts = new Array<ParticipantDebts>();
+    for(let participantDebts of participantsDebts) {
+        let debts = new Array<Debt>();
+
+        for(let debt of participantDebts.debts) {
+            debt.participant
+
+            let participantDebtsToCompare = participantsDebts.find(function(_participantDebts) {
+                return (_participantDebts.participant === debt.participant);
+            });
+            let debtToCompare = participantDebtsToCompare.debts.find(function(debt) {
+                return (debt.participant === participantDebts.participant);
+            });
+            if(debt.amount >= debtToCompare.amount) {
+                let newAmount = Math.round((debt.amount - debtToCompare.amount)*100)/100;
+                debts.push(new Debt(debt.participant, newAmount));
+            }
+        }
+        simplifiedParticipantsDebts.push(new ParticipantDebts(participantDebts.participant, debts));
+    }
+
+    return simplifiedParticipantsDebts;
 }
