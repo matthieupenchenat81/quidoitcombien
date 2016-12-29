@@ -1,28 +1,27 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>Liste des participants :</h1>
+<div class="well">
+  <h1>Liste des participants :</h1>
 
-    <form (ngSubmit)="register()" [formGroup]="participantsForm">
-      <div class="input-group">
-        <input type="text" placeholder="Entres un prénom" class="form-control" formControlName="name">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default" (click)="addParticipant()">Ajouter</button>
-        </div>
+  <form (ngSubmit)="register()" [formGroup]="participantsForm">
+    <div class="input-group">
+      <input type="text" placeholder="Entres un prénom" class="form-control" formControlName="name">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="addParticipant()">Ajouter</button>
       </div>
-      <br/>
+    </div>
+    <br/>
 
-      <div class="well">
+    <div class="well">
 
-        <alert type="warning" *ngIf="participants.length === 0">Aucun participant encore ajouté</alert>
-        <ul>
-          <li *ngFor="let participant of participants; let i = index">
-            {{participant}}
-            <button type="button" class="btn btn-default" (click)="deleteParticipant(i)">Enlever</button>
-          </li>
-        </ul>  
-      </div>
-      
-      <button type="submit" class="btn btn-success">Suivant</button>
-    </form>    
-  </div>
+      <alert type="warning" *ngIf="participants.length === 0">Aucun participant encore ajouté</alert>
+      <ul>
+        <li *ngFor="let participant of participants; let i = index">
+          {{participant}}
+          <button type="button" class="btn btn-default" (click)="deleteParticipant(i)">Enlever</button>
+        </li>
+      </ul>  
+    </div>
+    
+    <button style="float: right" type="submit" class="btn btn-success">Suivant</button>
+    <br/><br/>
+  </form>
 </div>
