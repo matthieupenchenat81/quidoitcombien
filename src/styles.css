@@ -11,3 +11,8 @@ html {
 body {
     background-color: transparent !important;
 }
+
+.row {
+  margin-left: 0 !Important;
+  margin-right: 0 !Important;
+}
