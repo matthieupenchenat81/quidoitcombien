@@ -29,12 +29,14 @@ export class ParticipantsList {
       }
   }
 
-  addParticipant() {
+  addParticipant(event) {
       let name = this.participantsForm.value.name;
       if(name !== '') {
         this.participants.push(name);
         this.nameCtrl.setValue('');
       }
+      event.preventDefault();
+      event.stopPropagation();
   }
 
   deleteParticipant(index) {

@@ -3,7 +3,7 @@
 
   <form (ngSubmit)="register()" [formGroup]="participantsForm">
     <div class="input-group">
-      <input type="text" placeholder="Entres un prénom" class="form-control" formControlName="name">
+      <input type="text" placeholder="Entres un prénom" class="form-control" formControlName="name" (keydown.enter)="addParticipant($event)">
       <div class="input-group-btn">
         <button type="button" class="btn btn-default" (click)="addParticipant()">Ajouter</button>
       </div>
