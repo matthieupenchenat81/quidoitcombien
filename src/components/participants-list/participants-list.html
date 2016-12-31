@@ -16,7 +16,9 @@
       <ul>
         <li *ngFor="let participant of participants; let i = index">
           {{participant}}
-          <button type="button" class="btn btn-default" (click)="deleteParticipant(i)">Enlever</button>
+          <button type="button" class="btn btn-default btn-sm" (click)="deleteParticipant(i)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
         </li>
       </ul>  
     </div>
