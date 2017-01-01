@@ -23,7 +23,7 @@
       </ul>  
     </div>
     
-    <button style="float: right" type="submit" class="btn btn-success">Suivant</button>
+    <button style="float: right" type="submit" class="btn btn-success" [disabled]="participants.length < 2">Suivant</button>
     <br/><br/>
   </form>
 </div>
