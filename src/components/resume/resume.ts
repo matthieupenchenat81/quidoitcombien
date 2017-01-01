@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SessionService } from '../../services/session-service';
-import { computeMoneyToGive } from '../../services/computeMoney';
+import { computeMoneyToGive, getParticipation } from '../../services/computeMoney';
 
 import { ParticipantDebts } from '../../app/CustomClasses';
 
@@ -13,9 +13,11 @@ import { ParticipantDebts } from '../../app/CustomClasses';
 })
 export class Resume {
   participantsDebts : Array<ParticipantDebts>;
+  participationAmout : number;
 
   constructor(private router: Router, private sessionService:  SessionService) {
-    let puchasesList = this.sessionService.getPurchasesList();
-    this.participantsDebts = computeMoneyToGive(puchasesList);
+    let purchasesList = this.sessionService.getPurchasesList();
+    this.participantsDebts = computeMoneyToGive(purchasesList);
+    this.participationAmout = getParticipation(purchasesList[0], this.participantsDebts);    
   }
 }

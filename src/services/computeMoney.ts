@@ -45,3 +45,19 @@ function simplify(participantsDebts : Array<ParticipantDebts>) : Array<Participa
 
     return simplifiedParticipantsDebts;
 }
+
+export function getParticipation(participantPurchase : Purchase, participantsDebts : Array<ParticipantDebts>) : number {
+
+    // 1- we retrieve participation amout of selected participant
+    let participationAmout = participantPurchase.amount;
+
+    // 2- for each participantsDebts (except the one of selected participant), 
+    // add to the amount all debts concerning selected participant
+    participantsDebts.forEach(function(participantDebts) {
+        participantDebts.debts.forEach(function(debt) {
+            if(debt.participant === participantPurchase.participant) participationAmout -= debt.amount;
+        });
+    });
+
+    return participationAmout;
+}
