@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SessionService } from '../../services/session-service';
-import { computeMoneyToGive, getParticipation } from '../../services/computeMoney';
+import { computeAllDebts, getAverageParticipationAmount } from '../../services/computeAllDebts';
 
-import { ParticipantDebts } from '../../app/CustomClasses';
+import { Debt } from '../../app/CustomClasses';
 
 @Component({
   selector: 'resume',
@@ -12,12 +12,12 @@ import { ParticipantDebts } from '../../app/CustomClasses';
   styleUrls: ['./resume.css']
 })
 export class Resume {
-  participantsDebts : Array<ParticipantDebts>;
+  allDebts : Array<Debt>;
   participationAmout : number;
 
   constructor(private router: Router, private sessionService:  SessionService) {
     let purchasesList = this.sessionService.getPurchasesList();
-    this.participantsDebts = computeMoneyToGive(purchasesList);
-    this.participationAmout = getParticipation(purchasesList[0], this.participantsDebts);    
+    this.allDebts = computeAllDebts(purchasesList);
+    this.participationAmout = Math.round(getAverageParticipationAmount(purchasesList)*100)/100;    
   }
 }

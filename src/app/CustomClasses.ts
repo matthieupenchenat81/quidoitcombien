@@ -40,6 +40,20 @@ export class Debt {
     toString() {
         return `${this._amount} à ${this._participant}`;
     }
+
+    toStringForResume() {
+
+        let response,
+        amoutRounded = Math.round(this._amount*100)/100;
+        if(this._amount === 0) {
+            response = `${this._participant} ne doit plus rien`;
+        } else if(this._amount > 0) {
+            response = `${this._participant} doit donner ${amoutRounded}€`;
+        } else {
+            response = `${this._participant} doit recevoir ${-amoutRounded}€`;
+        }
+        return response;
+    }
 }
 
 export class ParticipantDebts {

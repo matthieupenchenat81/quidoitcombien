@@ -4,26 +4,14 @@
     <br/>
     <alert type="info">Participation à hauteur de {{participationAmout}} euros par personne.</alert>
 
+    <p>Pour simplifier les comptes, un pot commun est mis en place. Les personnes qui aurons déjà payé plus que la participatin demandé
+         récupèreront ce surplus dans le pot commun tandis que ceux qui n'auront pas totalement payé le montant demandé
+          devront reverser ce qu'il leur manquait à payer dans le pot commun.</p>
+          
     <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Participant</th>
-                <th>Dette(s)</th>
-            </tr>
-        </thead>
         <tbody>
-            <tr *ngFor="let participantDebts of participantsDebts">
-                <td>{{participantDebts.participant}}</td>
-                <td>
-                    <ul [hidden]="participantDebts.debts.length === 0">
-                        <li *ngFor="let debt of participantDebts.debts">
-                            doit {{debt.amount}}€ à {{debt.participant}}
-                        </li>
-                    </ul>
-                    <span [hidden]="participantDebts.debts.length !== 0">
-                        n'a plus rien à payer ! 
-                    </span>
-                </td>
+            <tr *ngFor="let debt of allDebts">
+                <td>{{debt.toStringForResume()}}</td>
             </tr>
         </tbody>
     </table>
